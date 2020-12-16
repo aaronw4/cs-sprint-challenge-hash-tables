@@ -1,8 +1,29 @@
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    dic = {}
+
+    for i in range(0, len(arrays)):
+        index = 0
+        while index != len(arrays[i]):
+            if arrays[i][index] not in dic.keys():
+                dic[arrays[i][index]] = 1
+            else:
+                number = dic[arrays[i][index]]
+                number += 1
+                dic[arrays[i][index]] = number
+            index += 1
+    
+    num_list = list(dic.items())
+    num_list.sort(reverse=True, key=lambda tupl: tupl[1])
+    index = 0
+    biggest = num_list[index][1]
+    result = []
+
+    while biggest == len(arrays):
+        result.append(num_list[index][0])
+        index += 1
+        if index == len(num_list):
+            break
+        biggest = num_list[index][1]    
 
     return result
 
